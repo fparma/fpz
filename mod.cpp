@@ -1,0 +1,11 @@
+name = "fpzRMA Mods";
+picture = "logo_ca.paa";
+actionName = "GitHub";
+action = "https://github.com/fpzrma/fpzrma-mods";
+description = "fpzRMA mods";
+logo = "logo_ca.paa";
+logoOver = "logo_ca.paa";
+tooltip = "fpzRMA";
+overview = "fpzRMA Mods";
+author = "fpzRMA";
+overviewPicture = "logo_ca.paa";
