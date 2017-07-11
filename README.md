@@ -36,10 +36,10 @@ In the activation you enter
 Horde will spawn randomly throughout the trigger. It doesn't have to be a trigger but it's recommended for that reason
 
 Additionally, there's two more parameters:
+
 `[thisTrigger, <AMOUNT>, <PLAY SOUND>, <IGNORE MAX ZOMBIES>] call fpz_api_fnc_spawnHorde;`
 
 ### Using in other mission
-If you're not using the template, fpz can be initialized using
+If you're not using the template, fpz can be initialized using debug console local exec:
 
-In debug console local exec:
 `[] remoteExecCall ["fpz_api_fnc_init", 0, "fpz_init"];`
