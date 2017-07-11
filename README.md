@@ -1,6 +1,7 @@
 # FP Zombies
 
 Zombie addon for FPARMA missions
+
 This is not working without not-included dependencies, sorry
 
 ### For mission makers
@@ -29,14 +30,16 @@ Same thing, put down a trigger but this time you can choose the activation type,
 Any player present works aswell ofc.
 
 In the activation you enter
-[thisTrigger, <AMOUNT>] call fpz_api_fnc_spawnHorde;
+
+`[thisTrigger, <AMOUNT>] call fpz_api_fnc_spawnHorde;`
+
 Horde will spawn randomly throughout the trigger. It doesn't have to be a trigger but it's recommended for that reason
 
 Additionally, there's two more parameters:
-[thisTrigger, <AMOUNT>, <PLAY SOUND>, <IGNORE MAX ZOMBIES>] call fpz_api_fnc_spawnHorde;
+`[thisTrigger, <AMOUNT>, <PLAY SOUND>, <IGNORE MAX ZOMBIES>] call fpz_api_fnc_spawnHorde;`
 
 ### Using in other mission
 If you're not using the template, fpz can be initialized using
 
 In debug console local exec:
-[] remoteExecCall ["fpz_api_fnc_init", 0, "fpz_init"];
+`[] remoteExecCall ["fpz_api_fnc_init", 0, "fpz_init"];`
