@@ -11,10 +11,10 @@ Check out the mission and look at the comments to see how things work
 
 ### Zones
 
-Put down a zone and enter "true" as the condition (nothing else required)
+Put down a trigger and enter `true` as the condition (nothing else required)
 and put the following into activation field
 
-[thisTrigger, AMOUNT] call fpz_api_fnc_registerZone;
+`[thisTrigger, AMOUNT] call fpz_api_fnc_registerZone;`
 
 Zombies will spawn within the trigger area once players are near, maximum the amount provided
 Once a zombie is killed, the amount gets decremented and can not respawn (don't delete them with zeus)
@@ -31,13 +31,13 @@ Is default the max of X/Y size
 
 ### How to spawn hordes
 Same thing, put down a trigger but this time you can choose the activation type, either when some variable is set or some more complex condition.
-Any player present works aswell ofc.
 
 In the activation you enter
 
 `[thisTrigger, <AMOUNT>] call fpz_api_fnc_spawnHorde;`
 
-Horde will spawn randomly throughout the trigger. It doesn't have to be a trigger but it's recommended for that reason
+Horde will spawn randomly throughout the trigger. The first parameter is where to spawn, it can be another trigger or a position. E.g
+`[someOtherTrigger, <AMOUNT>] call fpz_api_fnc_spawnHorde;`
 
 Additionally, there's two more parameters:
 
