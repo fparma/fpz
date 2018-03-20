@@ -17,5 +17,17 @@
   _this call FUNC(onVictimHit);
 }] call CBA_fnc_addEventHandler;
 
+[QGVAR(onZombieDeath), {
+  params ["_zombie"];
+
+  #ifdef DEBUG_MODE_FULL
+    deleteVehicle (_zombie getVariable [QGVAR(debugArrow), objNull]);
+  #endif
+
+  if (random 1 > 0.6) then {
+    playSound3d [format ["rvg_zeds\sounds\die%1.ogg", 1 + floor random 2], _zombie];
+  };
+}] call CBA_fnc_addEventHandler;
+
 // On vehicle hit
 [QGVAR(onVehicleAttack), {_this call FUNC(onVictimVehicleHit)}] call CBA_fnc_addEventHandler;

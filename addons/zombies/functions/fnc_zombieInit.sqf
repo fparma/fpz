@@ -57,7 +57,7 @@ _zombie addEventHandler ["AnimDone", {_this call FUNC(onAnimDone)}];
   params ["_zombie"];
   {_zombie removeAllEventHandlers _x} forEach ["HandleDamage", "Killed", "Hit", "FiredNear"];
   _zombie addEventHandler ["HandleDamage", {_this call FUNC(handleDamage)}];
-  _zombie addEventHandler ["Killed", {_this call FUNC(onDeath)}];
+  _zombie addEventHandler ["Killed", {[QGVAR(onZombieDeath), _this] call CBA_fnc_localEvent}];
 
   GVAR(zombies) pushBackUnique _zombie;
 }, _zombie] call CBA_fnc_execNextFrame;
