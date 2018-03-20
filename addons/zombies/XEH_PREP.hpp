@@ -18,7 +18,6 @@ PREP(handleDamage);
 PREP(isValidVictim);
 
 PREP(onAnimDone);
-PREP(onDeath);
 PREP(onVictimHit);
 PREP(onVictimVehicleHit);
 

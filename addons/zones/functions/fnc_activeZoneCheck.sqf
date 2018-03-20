@@ -13,7 +13,9 @@ for "_i" from (count _zombies) to 0 step -1 do {
   if (!alive _zombie) then {
     _zombies deleteAt _idx;
     #ifdef DEBUG_MODE_FULL
-      deleteMarkerLocal format ["%1%2",QGVAR(debugMrkPos), _zombie getVariable [QGVAR(zonePos), []]];
+      if !(_zone getVariable [QGVAR(infinite), false]) then {
+        deleteMarkerLocal format ["%1%2",QGVAR(debugMrkPos), _zombie getVariable [QGVAR(zonePos), []]];
+      };
     #endif
   } else {
     if (!NEARBY_PLAYER(_zombie,fpz_despawnDistance)) then {
@@ -59,6 +61,10 @@ private _idx = -1;
       [_zombie, _x] call EFUNC(zombies,zombieInit);
       _zombies pushBack _zombie;
       _idx = _forEachIndex;
+
+      if (_zone getVariable [QGVAR(infinite), false]) then {
+        _zombie setVariable [QGVAR(addBack), _zone];
+      };
 
       #ifdef DEBUG_MODE_FULL
         format ["%1%2",QGVAR(debugMrkPos), _positions select _idx] setMarkerColorLocal "ColorBlack";
