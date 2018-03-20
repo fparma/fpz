@@ -3,7 +3,8 @@ params [
   ["_zone", objNull, [objNull]],
   ["_amount", fpz_defaultDensity, [0]],
   ["_activateDistance", -1, [0]],
-  ["_radius", -1, [0]]
+  ["_radius", -1, [0]],
+  ["_maxActiveInZone", -1, [0]]
 ];
 
 if (_radius isEqualTo -1) then {
@@ -20,6 +21,7 @@ _zone setVariable [QEGVAR(zones,amount), abs round _amount];
 _zone setVariable [QEGVAR(zones,radius), abs round _radius];
 _zone setVariable [QEGVAR(zones,activateDistance), abs round _activateDistance];
 _zone setVariable [QEGVAR(zones,zombies), []];
+_zone setVariable [QEGVAR(zones,maxActiveInZone), _maxActiveInZone];
 
-TRACE_4("Registering zone",_zone, abs round _amount, abs round _radius, abs round _activateDistance);
+TRACE_4("Registering zone",_zone, round _amount, abs round _radius, abs round _activateDistance, _maxActiveInZone);
 EGVAR(zones,zones) pushBackUnique _zone;

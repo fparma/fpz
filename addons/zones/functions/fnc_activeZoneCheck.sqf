@@ -5,7 +5,7 @@
 params ["_zone"];
 private _positions = _zone getVariable [QGVAR(positions), []];
 private _zombies = _zone getVariable [QGVAR(zombies), []];
-// TRACE_2("Check zone", count _positions, count _zombies);
+TRACE_2("Check zone", count _positions, count _zombies);
 
 for "_i" from (count _zombies) to 0 step -1 do {
   private _idx = _i - 1;
@@ -24,6 +24,9 @@ for "_i" from (count _zombies) to 0 step -1 do {
           format ["%1%2",QGVAR(debugMrkPos), _pos] setMarkerColorLocal "ColorRed";
         #endif
       };
+      #ifdef DEBUG_MODE_FULL
+        deleteVehicle (_zombie getVariable [QEGVAR(zombies,debugArrow), objNull]);
+      #endif
       deleteVehicle _zombie;
       _zombies deleteAt _idx;
     };
@@ -42,6 +45,10 @@ if (_empty && {!([_zone, _deactivateDistance] call FUNC(nearPlayer))}) exitWith 
   TRACE_3("Deactivating zone", _zone, count _zombies, count _positions);
   false
 };
+
+// Check max active in zone
+private _max = _zone getVariable [QGVAR(maxActiveInZone), -1];
+if (_max > -1 && {count _zombies >= _max}) exitWith {false};
 
 private _idx = -1;
 {
