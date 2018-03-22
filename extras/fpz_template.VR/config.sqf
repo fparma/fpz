@@ -3,7 +3,7 @@
 // Do note that changing spawn distance might require changes to zombie zones, with a custom activation distance
 
 /*
-fpz_maxAliveZombies = 120; // the maxium allowed amount of alive zombies  
+fpz_maxAliveZombies = 120; // the maxium allowed amount of alive zombies
 fpz_spawnDistanceMin = 150; // Zombies can not spawn closer than this
 fpz_spawnDistanceMax = 300; // Zombies can not spawn further away than this
 fpz_despawnDistance = fpz_spawnDistanceMax + 150; // Range when zombies are deleted
@@ -12,6 +12,7 @@ fpz_defaultDensity = 40; // the default amount of zombies for any registered zon
 fpz_maxChaseDistance = 250; // chase distance before giving up. horde ignores this. never lower than max aggro range
 fpz_aggroRangeInterval = [30, 70]; // min, max. stance will further affect this aggro range (lower = less)
 fpz_vehicleAggroMultiplier = 2; // Vehicles with their engine on will multiply above random aggro
+fpz_zombieDamageMultiplier = 1; // zombie damage multiplier. 0 = cannot be killed. 0.5 makes them almost impossible to kill with bodyshots from a pistol
 fpz_showLootSparkle = true; // show sparkle on zombie corpses that have weapons, magazines, items
 fpz_rvgSounds = true; // use ravage sounds. set to false to use celery's
 
