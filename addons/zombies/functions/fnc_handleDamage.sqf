@@ -9,17 +9,12 @@ if (_instigator in GVAR(targets) && {isNull (_zombie getVariable [QGVAR(victim),
   _zombie setVariable [QGVAR(victimChangeTimeout), CBA_missionTime + 6 + random 8];
 };
 
-private _ret = _dmg;
-if (!(toLower _hitPoint in ["hitface", "hitneck", "hithead"])) then {
-  private _curDamage = damage _zombie;
-  if (_selection != "") then {_curDamage = _zombie getHitPointDamage _hitPoint};
-  private _newDamage = _dmg - _curDamage;
-  _ret = _dmg - _newDamage * (1 - fpz_zombieDamageNonHeadMultiplier);
+if (_hitPoint == "HitLegs" && {(_zombie getHitPointDamage "HitLegs") + _dmg > 0.49}) exitWith {
+  TRACE_1("prevent walking",_dmg);
+  _zombie setHitPointDamage ["HitLegs", 0.49];
+  0
 };
 
-if (_hitPoint == "HitLegs" && {(_zombie getHitPointDamage "HitLegs") + _dmg > 0.49}) then {
-    _zombie setHitPointDamage ["HitLegs", 0.49];
-    _ret = 0;
-};
-
+private _oldDamage = if (_selection == "") then {damage _zombie} else {_zombie getHit _selection};
+private _ret = _oldDamage + (_dmg - _oldDamage) * (_zombie getVariable ["fpz_zombieDamageMultiplier", fpz_zombieDamageMultiplier]);
 _ret

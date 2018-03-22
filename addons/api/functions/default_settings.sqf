@@ -10,7 +10,7 @@ SETTING(fpz_defaultDensity,40);
 SETTING(fpz_aggroRangeInterval,[ARR_2(30,70)]);
 
 SETTING(fpz_vehicleAggroMultiplier,2);
-SETTING(fpz_zombieDamageNonHeadMultiplier,0.8);
+SETTING(fpz_zombieDamageMultiplier,1);
 SETTING(fpz_showLootSparkle,true);
 SETTING(fpz_rvgSounds,true);
 
