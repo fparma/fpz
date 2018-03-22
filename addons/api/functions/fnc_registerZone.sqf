@@ -7,6 +7,8 @@ params [
   ["_maxActiveInZone", -1, [0]]
 ];
 
+if (_zone in EGVAR(zones,zones)) exitWith {};
+
 if (_amount isEqualTo -1) then {
   _amount = fpz_defaultDensity;
   _zone setVariable [QEGVAR(zones,infinite), true];
@@ -29,4 +31,4 @@ _zone setVariable [QEGVAR(zones,zombies), []];
 _zone setVariable [QEGVAR(zones,maxActiveInZone), _maxActiveInZone];
 
 TRACE_4("Registering zone",_zone, abs round _amount, abs round _radius, abs round _activateDistance, _maxActiveInZone);
-EGVAR(zones,zones) pushBackUnique _zone;
+EGVAR(zones,zones) pushBack _zone;
