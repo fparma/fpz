@@ -8,21 +8,24 @@ private _cat = "FP Zombies";
 [_cat, "Create zone", {
   params ["_pos"];
 
-  private _opt1 = [10, 20, 30, fpz_defaultDensity];
+  private _opt1 = [-1, 10, 20, 30, fpz_defaultDensity];
   private _opt2 = [20, 50, 100, 200, 300, 500];
+  private _opt3 = [-1, 5, 10, 20, 30, 50];
 
   private _args = ["Create zone settings", [
-      ["Density", _opt1 apply {str _x + " zombies"}, 0, true],
-      ["Max radius for positions", _opt2 apply {str _x + "m"}, 2, true]
+      ["Density", ["Infinite (respawning)"] + (_opt1 select [1, count _opt1] apply {str _x + " zombies"}), count _opt1, true],
+      ["Size of zone", _opt2 apply {str _x + "m"}, 2, true],
+      ["Max active zombies in zone", ["None (distance based)"] + (_opt3 select [1, count _opt3] apply {str _x}), 0, true]
   ]] call Ares_fnc_ShowChooseDialog;
   if (count _args == 0) exitWith {};
 
-  _args params ["_c1", "_c2"];
+  _args params ["_c1", "_c2", "_c3"];
   private _density = _opt1 select _c1;
   private _radius = _opt2 select _c2;
+  private _maxActive = _opt3 select _c3;
 
   ([_pos, "AREA:", [_radius, _radius, 0, true]] call CBA_fnc_createTrigger) params ["_trigger"];
-  [_trigger, _density] remoteExecCall [QFUNC(registerZone), 2];
+  [_trigger, _density, -1, -1, _maxActive] remoteExecCall [QFUNC(registerZone), 2];
 }] call Ares_fnc_RegisterCustomModule;
 
 [_cat, "Spawn wandering", {
