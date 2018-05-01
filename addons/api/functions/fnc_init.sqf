@@ -27,8 +27,6 @@ if (hasInterface) then {
 
 // TODO: HC support
 if (isServer) then {
-    [EFUNC(zones,zonePfh), 0.03] call CBA_fnc_addPerFrameHandler;
-
     [{
       EGVAR(zones,players) = allPlayers select {
         alive _x &&
@@ -37,6 +35,8 @@ if (isServer) then {
         {simulationEnabled _x}
       };
     }, 2] call CBA_fnc_addPerFrameHandler;
+
+    [EFUNC(zones,zonePfh), 0.03] call CBA_fnc_addPerFrameHandler;
 };
 
 true
