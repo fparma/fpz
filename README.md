@@ -12,8 +12,7 @@ Check out the mission and look at the comments to see how things work
 
 ### Zones
 
-Put down a trigger and enter `true` as the condition (nothing else required)
-and put the following into activation field
+Put down a trigger and enter `true` as the condition, server only and put the following into activation field
 
 `[thisTrigger] call fpz_api_fnc_registerZone;`
 
