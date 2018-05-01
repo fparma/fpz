@@ -7,6 +7,7 @@ ADDON = false;
 ADDON = true;
 
 GVAR(zones) = [];
+GVAR(players) = [];
 
 [QGVAR(registerLocalZone), {
   params [["_zone", objNull]];
