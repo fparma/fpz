@@ -2,7 +2,8 @@
 
 Zombie addon for FPARMA missions
 
-This is not working without not-included dependencies, sorry
+Public notice:
+This will not work without some not-included dependencies, sorry
 
 ### For mission makers
 Use the template provided in releases. Edit config.sqf
@@ -14,14 +15,14 @@ Check out the mission and look at the comments to see how things work
 Put down a trigger and enter `true` as the condition (nothing else required)
 and put the following into activation field
 
-`[thisTrigger, AMOUNT (0 = fpz_defaultDensity, -1 = infinite. can be higher)] call fpz_api_fnc_registerZone;`
+`[thisTrigger] call fpz_api_fnc_registerZone;`
 
-Zombies will spawn within the trigger area once players are near, maximum the amount provided
+Zombies will spawn within the trigger area once players are near, max fpz_defaultDensity (config)
 Once a zombie is killed, the amount gets decremented and can not respawn (don't delete them with zeus)
 
 There's more parameters, if needed
 
-`[thisTrigger, AMOUNT, ACTIVATE DISTANCE, RADIUS, MAX ACTIVE IN ZONE] call fpz_api_fnc_registerZone;`
+`[thisTrigger, AMOUNT (0 = fpz_defaultDensity, -1 = infinite. can be higher), ACTIVATE DISTANCE, RADIUS, MAX ACTIVE IN ZONE] call fpz_api_fnc_registerZone;`
 
 ACTIVATE DISTANCE = when the object should activate and start trying to spawn
 
