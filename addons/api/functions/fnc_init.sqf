@@ -32,7 +32,7 @@ if (isServer) then {
     [{
       EGVAR(zones,players) = allPlayers select {
         alive _x &&
-        {!(_x isKindOf "HeadlessClient_F")} &&
+        {!(_x isKindOf "VirtualMan_F")} &&
         {!(_x getVariable [QEGVAR(zombies,ignore), false])} &&
         {simulationEnabled _x}
       };
