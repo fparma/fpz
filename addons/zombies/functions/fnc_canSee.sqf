@@ -5,6 +5,9 @@
 #include "script_component.hpp"
 params ["_zombie", "_target", "_range"];
 
+// horde
+if (_range isEqualTo 1E4) exitWith {true};
+
 if (isNull objectParent _target) exitWith {
   private _dist = _zombie distance _target;
 
