@@ -1,8 +1,8 @@
 #include "script_component.hpp"
 
 
-if (!hasInterface || {RETDEF(GVAR(ares),false)} || {isNil "zen_custom_modules_fnc_register"}) exitWith {false};
-GVAR(ares) = true;
+if (!hasInterface || {RETDEF(GVAR(zen),false)} || {isNil "zen_custom_modules_fnc_register"}) exitWith {false};
+GVAR(zen) = true;
 private _cat = "FP Zombies";
 
 [_cat, "Create zone", {
