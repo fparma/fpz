@@ -6,6 +6,7 @@ GVAR(initialized) = true;
 #include "default_settings.sqf"
 
 [] call FUNC(attachAresFunctions);
+[] call FUNC(attachZenFunctions);
 
 [EFUNC(zombies,zombiePfh), 0] call CBA_fnc_addPerFrameHandler;
 [{
