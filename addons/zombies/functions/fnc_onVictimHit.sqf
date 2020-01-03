@@ -22,7 +22,8 @@ _target setVariable [QGVAR(hitTimeout), CBA_missionTime + 1];
   if (!(ACE_PLAYER isEqualTo _target)) exitWith {};
 
   if (random 1 > .2) then {
-    [41] call ace_medical_fnc_showBloodEffect;
+    // [41] call ace_medical_fnc_showBloodEffect;
+    [true, 0.5] call ace_medical_feedback_fnc_effectBleeding;
   };
 
   if (!isNil "ace_hitreactions_fnc_fallDown" && {isNull objectParent _target} && {speed _target > 1} && {random 1 > 0.7}) then {

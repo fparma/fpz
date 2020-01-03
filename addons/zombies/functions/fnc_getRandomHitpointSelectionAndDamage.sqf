@@ -17,12 +17,12 @@ private _isPlayer = [_target] call ace_common_fnc_isPlayer;
 private _baseDamage =  [0.2, 0.1] select _isPlayer;
 
 private _dam = _baseDamage + random (switch (_sel) do {
-  case "head": {0.2};
-  case "body": {0.4};
+  case "head": {0.3};
+  case "body": {0.6};
   case "leg_l";
   case "leg_r";
   case "hand_l";
-  case "hand_r"; {0.5};
+  case "hand_r": {0.75};
   default {0}
 });
 
