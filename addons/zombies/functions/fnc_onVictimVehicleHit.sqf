@@ -29,7 +29,7 @@ if (!(_getAllHp isEqualTo [])) then {
   } forEach _allHitPoints;
 
   private _idx = if (count _prefer > 0 && {count _rest > 0}) then {
-    [_prefer, 0.65, _rest, 0.35] call BIS_fnc_selectRandomWeighted;
+    selectRandom ([_prefer, 0.65, _rest, 0.35] call BIS_fnc_selectRandomWeighted);
   } else {
     selectRandom (_prefer + _rest);
   };
