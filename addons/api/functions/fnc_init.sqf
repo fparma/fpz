@@ -26,7 +26,6 @@ if (hasInterface) then {
 ["ace_firedPlayerVehicleNonLocal", {_this call EFUNC(zombies,firedVehicle)}] call CBA_fnc_addEventHandler;
 ["ace_firedNonPlayerVehicle", {_this call EFUNC(zombies,firedVehicle)}] call CBA_fnc_addEventHandler;
 
-// TODO: HC support
 if (isServer) then {
     [{
       EGVAR(zones,players) = allPlayers select {
@@ -36,8 +35,6 @@ if (isServer) then {
         {simulationEnabled _x}
       };
     }, 2] call CBA_fnc_addPerFrameHandler;
-
-    [EFUNC(zones,zonePfh), 0.03] call CBA_fnc_addPerFrameHandler;
 };
 
 true

@@ -2,7 +2,8 @@
 
 params ["", ["_pfhId", -1]];
 if (GVAR(zones) isEqualTo []) exitWith {
-  //[_pfhId] call CBA_fnc_removePerFrameHandler;
+  [_pfhId] call CBA_fnc_removePerFrameHandler;
+  GVAR(zonePFH) = -1;
 };
 
 private _zone = GVAR(zones) deleteAt 0;

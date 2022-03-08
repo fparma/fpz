@@ -22,7 +22,13 @@ private _cat = "FP Zombies";
       _args params ["_pos"];
 
       ([_pos, "AREA:", [_radius, _radius, 0, true]] call CBA_fnc_createTrigger) params ["_trigger"];
-      [_trigger, _density, -1, -1, _maxActive] remoteExecCall [QFUNC(registerZone), 2];
+      private _hcs = EGVAR(zombies,headlessClients) select {!isNull _x};
+      if (_hcs isNotEqualTo []) then {
+        [_trigger, _density, -1, -1, _maxActive] remoteExecCall [QFUNC(registerZone), selectRandom _hcs];
+      } else {
+        [_trigger, _density, -1, -1, _maxActive] remoteExecCall [QFUNC(registerZone), 2];
+      };
+
   }, {}, [_pos]] call zen_dialog_fnc_create;
 }] call zen_custom_modules_fnc_register;
 
@@ -39,12 +45,15 @@ private _cat = "FP Zombies";
       params ["_dialog", "_args"];
       _dialog params ["_amount", "_radius"];
       _args params ["_pos"];
+      private _posList = [];
       for "_i" from 1 to _amount do {
-        private _z = [] call EFUNC(zombies,spawnZombie);
-        if (!isNull _z) then {
-          private _rpos = [_pos, _radius] call CBA_fnc_randPos;
-          [_z, _rpos] call EFUNC(zombies,zombieInit);
-        };
+        _posList pushBack ([_pos, _radius] call CBA_fnc_randPos);
+      };
+      private _hcs = EGVAR(zombies,headlessClients) select {!isNull _x};
+      if (_hcs isNotEqualTo []) then {
+        [QEGVAR(zombies,spawnZombieBulk), [[], _posList], selectRandom _hcs] call CBA_fnc_targetEvent;
+      } else {
+        [QEGVAR(zombies,spawnZombieBulk), [[], _posList]] call CBA_fnc_serverEvent;
       };
   }, {}, [_pos]] call zen_dialog_fnc_create;
 }] call zen_custom_modules_fnc_register;
