@@ -26,9 +26,9 @@ if (hasInterface) then {
 ["ace_firedPlayerVehicleNonLocal", {_this call EFUNC(zombies,firedVehicle)}] call CBA_fnc_addEventHandler;
 ["ace_firedNonPlayerVehicle", {_this call EFUNC(zombies,firedVehicle)}] call CBA_fnc_addEventHandler;
 
-if (isServer) then {
+if (isServer || {!hasInterface}) then {
     [{
-      EGVAR(zones,players) = allPlayers select {
+      EGVAR(zones,players) = (call CBA_fnc_players) select {
         alive _x &&
         {!(_x isKindOf "VirtualMan_F")} &&
         {!(_x getVariable [QEGVAR(zombies,ignore), false])} &&
