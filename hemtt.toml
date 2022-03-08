@@ -3,8 +3,8 @@ name = "fpz"
 prefix = "fpz"
 author = "FP Mod Team"
 modname = "fpz"
-keyname = "fpz_v{{version}}"
-signame = "fpz_v{{version}}"
+# keyname = "fpz_v{{version}}"
+# signame = "fpz_v{{version}}"
 files = [
     "mod.cpp",
     "AUTHORS.txt",

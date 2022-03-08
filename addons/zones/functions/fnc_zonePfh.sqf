@@ -24,7 +24,7 @@ if (_zone getVariable [QGVAR(active), false]) then {
     GVAR(zones) pushBack _zone;
   };
 } else {
-  private _playerNear = [_zone, _zone getVariable [QGVAR(activateDistance), fpz_maxChaseDistance]] call FUNC(nearPlayer);
+  private _playerNear = [getPosWorld _zone, _zone getVariable [QGVAR(activateDistance), fpz_maxChaseDistance]] call FUNC(nearPlayer);
   if (_playerNear) then {_zone setVariable [QGVAR(active), true]};
   GVAR(zones) pushBack _zone;
 };

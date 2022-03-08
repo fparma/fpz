@@ -18,7 +18,7 @@ for "_i" from (count _zombies) to 0 step -1 do {
       };
     #endif
   } else {
-    if (!NEARBY_PLAYER(_zombie,fpz_despawnDistance)) then {
+    if (!NEARBY_PLAYER(getPosWorld _zombie,fpz_despawnDistance)) then {
       private _pos = _zombie getVariable [QGVAR(zonePos), []];
       if !(_pos isEqualTo []) then {
         _positions pushBack _pos;
@@ -39,7 +39,7 @@ private _empty = _zombies isEqualTo [];
 if (_empty && {_positions isEqualTo []}) exitWith {true};
 
 private _deactivateDistance = (_zone getVariable [QGVAR(activateDistance), fpz_maxChaseDistance]) + DEACTIVATE_MODIFIER;
-if (_empty && {!([_zone, _deactivateDistance] call FUNC(nearPlayer))}) exitWith {
+if (_empty && {!([getPosWorld _zone, _deactivateDistance] call FUNC(nearPlayer))}) exitWith {
   _zone setVariable [QGVAR(active), false];
   #ifdef DEBUG_MODE_FULL
     {format ["%1%2", QGVAR(debugMrkPos), _x] setMarkerAlphaLocal 0} forEach _positions;
