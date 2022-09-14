@@ -7,5 +7,7 @@ texHeaders.bin
 *.swo
 *.biprivatekey
 Thumbs.db
+keys/*
+.hemtt/local
 
 node_modules

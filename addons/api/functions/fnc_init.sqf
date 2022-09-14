@@ -26,18 +26,15 @@ if (hasInterface) then {
 ["ace_firedPlayerVehicleNonLocal", {_this call EFUNC(zombies,firedVehicle)}] call CBA_fnc_addEventHandler;
 ["ace_firedNonPlayerVehicle", {_this call EFUNC(zombies,firedVehicle)}] call CBA_fnc_addEventHandler;
 
-// TODO: HC support
-if (isServer) then {
+if (isServer || {!hasInterface}) then {
     [{
-      EGVAR(zones,players) = allPlayers select {
+      EGVAR(zones,players) = (call CBA_fnc_players) select {
         alive _x &&
         {!(_x isKindOf "VirtualMan_F")} &&
         {!(_x getVariable [QEGVAR(zombies,ignore), false])} &&
         {simulationEnabled _x}
       };
     }, 2] call CBA_fnc_addPerFrameHandler;
-
-    [EFUNC(zones,zonePfh), 0.03] call CBA_fnc_addPerFrameHandler;
 };
 
 true

@@ -2,7 +2,8 @@
 
 params ["", ["_pfhId", -1]];
 if (GVAR(zones) isEqualTo []) exitWith {
-  //[_pfhId] call CBA_fnc_removePerFrameHandler;
+  [_pfhId] call CBA_fnc_removePerFrameHandler;
+  GVAR(zonePFH) = -1;
 };
 
 private _zone = GVAR(zones) deleteAt 0;
@@ -24,7 +25,7 @@ if (_zone getVariable [QGVAR(active), false]) then {
     GVAR(zones) pushBack _zone;
   };
 } else {
-  private _playerNear = [_zone, _zone getVariable [QGVAR(activateDistance), fpz_maxChaseDistance]] call FUNC(nearPlayer);
+  private _playerNear = [getPosWorld _zone, _zone getVariable [QGVAR(activateDistance), fpz_maxChaseDistance]] call FUNC(nearPlayer);
   if (_playerNear) then {_zone setVariable [QGVAR(active), true]};
   GVAR(zones) pushBack _zone;
 };
