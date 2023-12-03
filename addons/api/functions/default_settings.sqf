@@ -7,7 +7,8 @@ SETTING(fpz_despawnDistance,400);
 SETTING(fpz_maxChaseDistance,250);
 
 SETTING(fpz_defaultDensity,40);
-SETTING(fpz_aggroRangeInterval,[ARR_2(30,70)]);
+private _setting = [30,70]
+SETTING(fpz_aggroRangeInterval, _setting);
 
 SETTING(fpz_vehicleAggroMultiplier,2);
 SETTING(fpz_zombieDamageMultiplier,1);
