@@ -1,18 +1,24 @@
-version = "2"
 name = "fpz"
 prefix = "fpz"
 author = "FP Mod Team"
 modname = "fpz"
 # keyname = "fpz_v{{version}}"
 # signame = "fpz_v{{version}}"
-files = [
+reuse_private_key = false
+
+[version]
+major = 3
+minor = 0
+patch = 0
+
+[files]
+include = [
     "mod.cpp",
     "AUTHORS.txt",
     "LICENSE",
     "logo_ca.paa",
     "README.md"
 ]
-reuse_private_key = false
 exclude = [
     "*.psd",
     "*.png",

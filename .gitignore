@@ -11,3 +11,10 @@ keys/*
 .hemtt/local
 
 node_modules
+
+.hemttout
+hemtt
+hemtt.exe
+####
+
+build.bat
