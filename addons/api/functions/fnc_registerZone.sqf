@@ -30,7 +30,7 @@ _zone setVariable [QEGVAR(zones,activateDistance), abs round _activateDistance];
 _zone setVariable [QEGVAR(zones,zombies), []];
 _zone setVariable [QEGVAR(zones,maxActiveInZone), _maxActiveInZone];
 
-TRACE_4("Registering zone",_zone, abs round _amount, abs round _radius, abs round _activateDistance, _maxActiveInZone);
+TRACE_5("Registering zone",_zone, abs round _amount, abs round _radius, abs round _activateDistance, _maxActiveInZone);
 EGVAR(zones,zones) pushBack _zone;
 
 if (EGVAR(zones,zonePFH) isEqualTo -1) then {
